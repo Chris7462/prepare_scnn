@@ -56,12 +56,12 @@ def export_fcn_model(output_path, input_height, input_width):
 if __name__ == '__main__':
     # Construct the argument parser and parse the arguments
     ap = argparse.ArgumentParser()
-    ap.add_argument('--height', type=int, default=374, help='The height of the input image')
-    ap.add_argument('--width', type=int, default=1238, help='The width of the input image')
+    ap.add_argument('--height', type=int, default=370, help='The height of the input image')
+    ap.add_argument('--width', type=int, default=1226, help='The width of the input image')
     ap.add_argument('--output-dir', type=str, default='models',
                     help='The path to output .pt file')
     args = vars(ap.parse_args())
-    # args = {'height': 374, 'width': 1238, 'output_dir': 'fcn_torch_backend/models'}
+    # args = {'height': 370, 'width': 1226, 'output_dir': 'fcn_torch_backend/models'}
 
     # Create output directory if it doesn't exist
     os.makedirs(args['output_dir'], exist_ok=True)

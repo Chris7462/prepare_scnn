@@ -3,8 +3,9 @@
 # This file contains all model-related configuration variables
 
 # Model configuration - change these variables to use different models
-set(MODEL_NAME "fcn_resnet101_370x1226" CACHE STRING "Base name of the model")
-set(EXPORT_SCRIPT "export_fcn_to_pt.py" CACHE STRING "Python script model")
+# Model is traced for specific input size (288x952 for KITTI aspect ratio)
+set(MODEL_NAME "scnn_vgg16_288x952" CACHE STRING "Base name of the model")
+set(EXPORT_SCRIPT "export_scnn_to_pt.py" CACHE STRING "Python script model")
 
 # Derived file names (automatically generated from MODEL_NAME)
 set(MODEL_FILE "${MODEL_NAME}.pt")
@@ -22,5 +23,4 @@ set(EXPORT_SCRIPT_PATH ${SCRIPTS_DIR}/${EXPORT_SCRIPT})
 set(TEST_IMAGE_FILES
   image_000.png
   image_001.png
-  image_002.png
   CACHE STRING "List of test image files")
