@@ -16,7 +16,9 @@ endif()
 # Custom target to generate Torch script model
 add_custom_command(
   OUTPUT ${MODEL_PATH}
-  COMMAND ${PYTHON3_EXECUTABLE} ${EXPORT_SCRIPT_PATH} --output-dir ${MODELS_DIR}
+  COMMAND ${PYTHON3_EXECUTABLE} ${EXPORT_SCRIPT_PATH}
+          --checkpoint ${CHECKPOINT_PATH}
+          --output-dir ${MODELS_DIR}
   DEPENDS ${EXPORT_SCRIPT_PATH}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT "Generating TorchScript model: ${MODEL_FILE}..."

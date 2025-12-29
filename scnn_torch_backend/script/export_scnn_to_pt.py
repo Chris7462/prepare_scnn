@@ -8,18 +8,11 @@ KITTI aspect ratio (370x1226 -> 288x952, divisible by 8).
 
 import argparse
 import os
-from pathlib import Path
-import sys
+
+from scnn_torch.model import SCNN
 
 import torch
 from torch.nn import Module
-
-SCNN_ROOT = Path(__file__).resolve().parent.parent.parent
-# For interactive testing only
-# SCNN_ROOT = Path('/home/yi-chen/python_ws')
-sys.path.insert(0, str(SCNN_ROOT))
-
-from scnn_torch.model import SCNN
 
 
 class SCNNWrapper(Module):
@@ -77,15 +70,11 @@ if __name__ == '__main__':
                     help='The height of the input image (default: 288)')
     ap.add_argument('--width', type=int, default=952,
                     help='The width of the input image (default: 952 for KITTI aspect ratio)')
-    ap.add_argument('--checkpoint', type=str, default=None,
-                    help='Path to checkpoint file (default: scnn_torch/checkpoints/best.pth)')
+    ap.add_argument('--checkpoint', type=str, required=True,
+                    help='Path to checkpoint file')
     ap.add_argument('--output-dir', type=str, default='models',
                     help='The path to output .pt file')
     args = vars(ap.parse_args())
-
-    # Default checkpoint path
-    if args['checkpoint'] is None:
-        args['checkpoint'] = str(SCNN_ROOT / 'scnn_torch' / 'checkpoints' / 'best.pth')
 
     # Create output directory if it doesn't exist
     os.makedirs(args['output_dir'], exist_ok=True)

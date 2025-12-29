@@ -7,6 +7,10 @@
 set(MODEL_NAME "scnn_vgg16_288x952" CACHE STRING "Base name of the model")
 set(EXPORT_SCRIPT "export_scnn_to_pt.py" CACHE STRING "Python script model")
 
+# Checkpoint path - path to trained SCNN checkpoint
+set(CHECKPOINT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../scnn_torch/checkpoints/best.pth"
+    CACHE FILEPATH "Path to trained SCNN checkpoint")
+
 # Derived file names (automatically generated from MODEL_NAME)
 set(MODEL_FILE "${MODEL_NAME}.pt")
 
